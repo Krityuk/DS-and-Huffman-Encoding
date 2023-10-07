@@ -40,7 +40,7 @@ class Huffman {
         HuffmanNode y = queue.removeFirst();
 
         HuffmanNode f = HuffmanNode('-', x.frequency + y.frequency, x, y);
-        
+
         _root = f;
 
         queue.add(f);
