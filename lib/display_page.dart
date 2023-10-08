@@ -30,8 +30,8 @@ class _DisplayPageState extends State<DisplayPage> {
       displayWidget = const StackDisplayWidget();
     } else if (widget.dsa == 'Queue') {
       displayWidget = const QueueDisplayWidget();
-      // } else if (widget.dsa == 'Tree') {
-      //   displayWidget = const TreeDisplayWidget();
+      } else if (widget.dsa == 'Tree') {
+        displayWidget = const TreeDisplayWidget();
     } else {
       // Handle the case when no data type is selected
       displayWidget = const Center(child: Text('Please select a data type'));
