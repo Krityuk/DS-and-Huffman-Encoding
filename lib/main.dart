@@ -69,7 +69,7 @@ class _LandingPageState extends State<LandingPage> {
                         builder: (context) =>
                             DisplayPage(dsa: selectedDataType)));
               },
-              child: const Text("Enter"),
+              child: Text("Explore $selectedDataType"),
             ),
             const SizedBox(
               height: 200,

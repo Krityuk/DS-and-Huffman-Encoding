@@ -58,7 +58,7 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
                 ),
               )),
           Container(
-            color: Colors.grey,
+            color: Colors.grey.withOpacity(0.2),
             height: 80,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -66,14 +66,13 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: (index & 1 == 0) ? Colors.amber : Colors.grey,
+                    color: Colors.white,
                     border: Border.all(
                       color: Colors.black,
                       width: 1,
                     ),
                   ),
                   width: 80,
-                  margin: const EdgeInsets.all(4),
                   child: Center(
                     child: Text(
                       arrayData[index].toString(),
@@ -101,7 +100,7 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
             ),
           ),
           Container(
-            color: Colors.grey,
+            color: Colors.grey.withOpacity(0.2),
             height: 80,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -109,13 +108,12 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: (index & 1 == 0) ? Colors.amber : Colors.grey,
+                    color: Colors.white,
                     border: Border.all(
                       color: Colors.black,
                       width: 1,
                     ),
                   ),
-                  margin: const EdgeInsets.all(4),
                   width: 80,
                   child: Center(
                     child: Text(

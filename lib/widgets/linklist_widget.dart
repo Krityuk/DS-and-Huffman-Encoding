@@ -10,12 +10,14 @@ class LinkedListDisplayWidget extends StatefulWidget {
 class _LinkedListDisplayWidgetState extends State<LinkedListDisplayWidget> {
   TextEditingController linkedListController1 = TextEditingController();
   TextEditingController linkedListController2 = TextEditingController();
+  TextEditingController linkedListController3 = TextEditingController();
   List<int> linkedListData = [];
 
   @override
   void dispose() {
     linkedListController1.dispose();
     linkedListController2.dispose();
+    linkedListController3.dispose();
     linkedListData.clear();
     super.dispose();
   }
@@ -43,7 +45,7 @@ class _LinkedListDisplayWidgetState extends State<LinkedListDisplayWidget> {
                 });
               },
               decoration: const InputDecoration(
-                labelText: 'Add into LL',
+                labelText: 'Add into LinkedList',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -60,7 +62,24 @@ class _LinkedListDisplayWidgetState extends State<LinkedListDisplayWidget> {
                 });
               },
               decoration: const InputDecoration(
-                labelText: 'Remove from LL',
+                labelText: 'Remove from LinkedList',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: linkedListController3,
+              keyboardType: TextInputType.number,
+              onSubmitted: (value) {
+                setState(() {
+                  linkedListData.removeAt(int.parse(value));
+                  linkedListController3.clear();
+                });
+              },
+              decoration: const InputDecoration(
+                labelText: 'Remove via index',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -79,30 +98,46 @@ class _LinkedListDisplayWidgetState extends State<LinkedListDisplayWidget> {
             ),
           ),
           Container(
-            color: Colors.grey,
+            color: Colors.grey.withOpacity(0.2),
             height: 45,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: linkedListData.length,
               itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: (index & 1 == 0) ? Colors.amber : Colors.grey,
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1,
-                    ),
-                  ),
-                  width: 80,
-                  margin: const EdgeInsets.all(4),
-                  child: Center(
-                    child: Text(
-                      linkedListData[index].toString(),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                return Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: (index & 1 == 0) ? Colors.amber : Colors.grey,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                          ),
+                        ),
+                        width: 40,
+                        child: Center(
+                          child: Text(
+                            linkedListData[index].toString(),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: (index & 1 == 0) ? Colors.amber : Colors.grey,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                          ),
+                        ),
+                        width: 40,
+                      ),
+                    ],
                   ),
                 );
               },
@@ -124,7 +159,7 @@ class _LinkedListDisplayWidgetState extends State<LinkedListDisplayWidget> {
           Container(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'List Length: ${linkedListData.length}',
+              'LinkedList Length: ${linkedListData.length}',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,

@@ -76,14 +76,15 @@ class _QueueDisplayWidgetState extends State<QueueDisplayWidget> {
             height: 40,
           ),
           Container(
-            color: Colors.grey,
+            color: Colors.grey.withOpacity(0.2),
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: QueueData.length,
               itemBuilder: (context, index) {
                 return Container(
-                  width: 80,
+                  width: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 5),
                   decoration: BoxDecoration(
                     color: (index & 1 == 0) ? Colors.amber : Colors.grey,
                     border: Border.all(
@@ -91,7 +92,6 @@ class _QueueDisplayWidgetState extends State<QueueDisplayWidget> {
                       width: 1,
                     ),
                   ),
-                  margin: const EdgeInsets.all(4),
                   child: Center(
                     child: Text(
                       reverseList[index].toString(),

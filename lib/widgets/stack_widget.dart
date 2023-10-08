@@ -23,8 +23,6 @@ class _StackDisplayWidgetState extends State<StackDisplayWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<int> reverseList = List<int>.from(StackData.reversed);
-
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -72,14 +70,25 @@ class _StackDisplayWidgetState extends State<StackDisplayWidget> {
               ),
             ),
           ),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Top: ${StackData.length - 1}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
           const SizedBox(
             height: 40,
           ),
           Container(
-            color: Colors.grey,
+            color: Colors.grey.withOpacity(0.2),
             height: 400,
             width: 150,
             child: ListView.builder(
+              reverse: true,
               itemCount: StackData.length,
               itemBuilder: (context, index) {
                 return Container(
@@ -94,7 +103,7 @@ class _StackDisplayWidgetState extends State<StackDisplayWidget> {
                   margin: const EdgeInsets.all(4),
                   child: Center(
                     child: Text(
-                      reverseList[index].toString(),
+                      StackData[index].toString(),
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -114,7 +123,7 @@ class _StackDisplayWidgetState extends State<StackDisplayWidget> {
           Container(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'List Length: ${StackData.length}',
+              'Stack Length: ${StackData.length}',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
