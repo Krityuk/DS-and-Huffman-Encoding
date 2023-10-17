@@ -25,6 +25,13 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  List<String> dataTypes = [
+    'Array',
+    'LinkedList',
+    'Stack',
+    'Queue',
+    'Tree',
+  ];
   String? selectedDataType = "Select Your Data Type";
   @override
   Widget build(BuildContext context) {
@@ -38,27 +45,34 @@ class _LandingPageState extends State<LandingPage> {
           children: [
             const Text('DSA - Simulator'),
             Center(
-              child: DropdownButton<String>(
-                value: selectedDataType,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedDataType = newValue;
-                  });
-                  debugPrint('$selectedDataType is selectedDataType   😎😎');
-                },
-                items: <String>[
-                  'Select Your Data Type',
-                  'Array',
-                  'LinkedList',
-                  'Stack',
-                  'Queue',
-                  'Tree',
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+              child: SizedBox(
+                height: 320,
+                child: ListView.builder(
+                  itemCount: dataTypes.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Center(
+                        child: Text(selectedDataType!),
+                      );
+                    }
+                    final dataType = dataTypes[index - 1];
+                    return Container(
+                      decoration: BoxDecoration(border: Border.all()),
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ListTile(
+                        leading: const Icon(Icons.data_array),
+                        title: Text(dataType),
+                        onTap: () {
+                          setState(() {
+                            selectedDataType = dataType;
+                          });
+                          debugPrint(
+                              '$selectedDataType is selectedDataType 😎😎');
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             ElevatedButton(

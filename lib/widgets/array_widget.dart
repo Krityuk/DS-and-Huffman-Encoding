@@ -65,6 +65,7 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
               itemCount: arrayData.length,
               itemBuilder: (context, index) {
                 return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 7),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
@@ -107,6 +108,7 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
               itemCount: sortedArray.length,
               itemBuilder: (context, index) {
                 return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 7),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
@@ -141,8 +143,36 @@ class _ArrayDisplayWidgetState extends State<ArrayDisplayWidget> {
               ),
             ),
           ),
+          // Container(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     'Array Length: ${arrayData.length}',
+          //     style: const TextStyle(
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 16,
+          //     ),
+          //   ),
+          // ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  // Add your code for the first button's action here
+                },
+                child: const Text('Add'),
+              ),
+              const SizedBox(width: 16), // Add some spacing between the buttons
+              ElevatedButton(
+                onPressed: () {
+                  // Add your code for the second button's action here
+                },
+                child: const Text('remove'),
+              ),
+            ],
+          ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.2,
           )
         ],
       ),

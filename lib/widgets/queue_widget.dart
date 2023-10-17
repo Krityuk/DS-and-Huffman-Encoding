@@ -126,6 +126,7 @@ class _QueueDisplayWidgetState extends State<QueueDisplayWidget> {
           )
         ],
       ),
+    
     );
   }
 }
